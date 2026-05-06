@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omar Paracha | Principal Network Architect </title>
+    
+    <!-- Open Graph / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aiautomationlab.dev/">
+    <meta property="og:title" content="Omar Paracha | Principal Network Architect">
+    <meta property="og:description" content="18+ years network architecture experience, now building AI agents for enterprise automation">
+    
+    <!-- Twitter -->
+=    <meta property="twitter:url" content="https://aiautomationlab.dev/">
+    <meta property="twitter:title" content="Omar Paracha | Network Architect & AI Automation Engineer">
+    <meta property="twitter:description" content="Building AI agents for network automation">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #111827;
+            --bg-card: #1a2332;
+            --accent-cyan: #06b6d4;
+            --accent-emerald: #10b981;
+            --accent-amber: #f59e0b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border: #1e293b;
+            --glow-cyan: rgba(6, 182, 212, 0.3);
+            --glow-emerald: rgba(16, 185, 129, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated gradient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+            animation: gradientShift 15s ease infinite;
+            z-index: -1;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-10%, -10%); }
+        }
+        
+        /* Grid overlay */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header */
+        header {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 14, 23, 0.8);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-emerald));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 6rem;
+            text-align: center;
+        }
+        
+        .profile-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid var(--accent-cyan);
+            margin: 0 auto 2rem;
+            display: block;
+            box-shadow: 0 0 30px var(--glow-cyan);
+        }
+        
+        .hero-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 2rem;
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease;
+        }
+        
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            animation: fadeInUp 1s ease 0.4s backwards;
+            line-height: 1.8;
+        }
+        
+        .hero-cta {
+            display: inline-flex;
+            gap: 1rem;
+            animation: fadeInUp 1.2s ease 0.6s backwards;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-emerald));
+            color: white;
+            box-shadow: 0 4px 20px var(--glow-cyan);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px var(--glow-cyan);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(6, 182, 212, 0.1);
+        }
+        
+        /* Tech Stack */
+        .tech-stack {
+            padding: 4rem 0;
+            border-top: 1px solid var(--border);
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .tech-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            transition: all 0.3s;
+        }
+        
+        .tech-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 8px 30px rgba(6, 182, 212, 0.15);
+        }
+        
+        .tech-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-name {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Projects Section */
+        .projects {
+            padding: 6rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-emerald));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            margin-right: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-tag.live {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: rgba(16, 185, 129, 0.3);
+            color: var(--accent-emerald);
+        }
+        
+        .project-tag.planned {
+            background: rgba(148, 163, 184, 0.1);
+            border-color: rgba(148, 163, 184, 0.3);
+            color: var(--text-secondary);
+        }
+        
+        .project-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        .project-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .project-link {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .project-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 6rem 0;
+            background: var(--bg-secondary);
+        }
+        
+        .contact-methods {
+            display: grid;
+            gap: 2rem;
+            max-width: 600px;
+            margin: 3rem auto;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+        
+        .contact-item:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2);
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            min-width: 2rem;
+        }
+        
+        .contact-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .contact-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .availability {
+            max-width: 600px;
+            margin: 3rem auto 0;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            text-align: center;
+        }
+        
+        .availability h3 {
+            font-family: 'Syne', sans-serif;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .availability p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-about {
+            max-width: 400px;
+        }
+        
+        .footer-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .social-link:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-overlay"></div>
+    
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">AI_AUTOMATION_LAB</div>
+                <ul class="nav-links">
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#tech">Tech Stack</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <img src="https://github.com/omarparacha.png" alt="Omar Paracha" class="profile-image">
+                
+                <h1>Building AI Agents for Network Automation</h1>
+                <p class="hero-subtitle">
+                    After <strong>18+ years</strong> architecting enterprise networks with Cisco SD-WAN, Juniper Mist, 
+                    and Palo Alto firewalls, I'm now automating the work I used to do manually. Currently on a 
+                    <strong>30-day challenge</strong>: publishing one AI automation project every 2 days across 
+                    AWS, Azure, GCP, and OCI infrastructure.
+                </p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="https://linkedin.com/in/omarparacha" target="_blank" class="btn btn-secondary">Connect on LinkedIn</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="tech-stack" id="tech">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Technology Stack</h2>
+                    <p class="section-subtitle">18+ years experience with enterprise platforms</p>
+                </div>
+                
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <div class="tech-icon">🌐</div>
+                        <div class="tech-name">Cisco SD-WAN</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">📡</div>
+                        <div class="tech-name">Juniper Mist</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">🔥</div>
+                        <div class="tech-name">Palo Alto</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">☁️</div>
+                        <div class="tech-name">AWS</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">🌩️</div>
+                        <div class="tech-name">Azure</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">🔵</div>
+                        <div class="tech-name">GCP</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">🔶</div>
+                        <div class="tech-name">OCI</div>
+                    </div>
+                    <div class="tech-item">
+                     <div class="tech-icon">◉</div>
+                    <div class="tech-name">OpenAI</div>
+                    </div>
+                     <div class="tech-item">
+                        <div class="tech-icon">🤖</div>
+                        <div class="tech-name">Open AI</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">🐍</div>
+                        <div class="tech-name">Python</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">⚙️</div>
+                        <div class="tech-name">Terraform</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="projects" id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">AI Automation Projects</h2>
+                    <p class="section-subtitle">30-day challenge • One project every 2 days</p>
+                </div>
+                
+                <!-- Progress Tracker -->
+                <div style="max-width: 800px; margin: 0 auto 4rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 1rem; padding: 2rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3 style="font-family: 'Syne', sans-serif; font-size: 1.25rem;">Challenge Progress</h3>
+                        <span style="font-size: 1.5rem; font-weight: 700; color: var(--accent-cyan);">1/15</span>
+                    </div>
+                    <div style="background: var(--bg-primary); height: 12px; border-radius: 1rem; overflow: hidden; margin-bottom: 1rem;">
+                        <div style="background: linear-gradient(90deg, var(--accent-cyan), var(--accent-emerald)); height: 100%; width: 6.67%; transition: width 0.5s;"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; color: var(--text-secondary); font-size: 0.9rem;">
+                        <span>Started: May 5, 2026</span>
+                        <span>Target: June 4, 2026</span>
+                    </div>
+                </div>
+                
+                <!-- Featured Project -->
+                <div style="max-width: 900px; margin: 0 auto 4rem; background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(16, 185, 129, 0.1)); border: 1px solid var(--border); border-radius: 1rem; padding: 3rem; position: relative;">
+                    <div style="position: absolute; top: 1.5rem; right: 1.5rem; background: var(--accent-emerald); padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.85rem; font-weight: 600;">
+                        ✅ LIVE NOW
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <span style="color: var(--accent-cyan); font-size: 0.9rem; font-weight: 600;">PROJECT #1 • DAY 1-2</span>
+                    </div>
+                    
+                    <h3 style="font-family: 'Syne', sans-serif; font-size: 2rem; margin-bottom: 1rem;">
+                        🛡️ Network Security Scanner Agent
+                    </h3>
+                    
+                    <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem;">
+                        After <strong style="color: var(--accent-cyan);">17 years of manual security audits</strong>, I automated what used to take 2-3 hours into a <strong>2-minute autonomous scan</strong>. This AI agent performs comprehensive security assessments with zero human intervention.
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-cyan);">5</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Security Checks</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-emerald);">2min</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Scan Time</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-amber);">100%</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Autonomous</div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: var(--bg-card); padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 2rem;">
+                        <h4 style="font-size: 1rem; margin-bottom: 1rem; color: var(--accent-cyan);">What It Does:</h4>
+                        <ul style="color: var(--text-secondary); line-height: 2; list-style: none; padding: 0;">
+                            <li>✅ SSL/TLS certificate validation & expiration checking</li>
+                            <li>✅ HTTP security headers analysis (HSTS, CSP, X-Frame-Options)</li>
+                            <li>✅ Open port scanning & service identification</li>
+                            <li>✅ DNS configuration verification</li>
+                            <li>✅ Generates actionable security reports with remediation steps</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.75rem;">Built with:</div>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <span style="background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.85rem;">Python 3.8+</span>
+                            <span style="background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.85rem;">Claude AI</span>
+                            <span style="background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.85rem;">OpenSSL</span>
+                            <span style="background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.85rem;">Network APIs</span>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="https://github.com/omarparacha/network-security-scanner" target="_blank" class="btn btn-primary">View on GitHub →</a>
+                        <a href="https://linkedin.com/in/omarparacha" target="_blank" class="btn btn-secondary">Read Article</a>
+                    </div>
+                </div>
+                
+                <!-- All Projects Grid -->
+                <div class="project-grid">
+                    <!-- Project 1 - Live -->
+                    <div class="project-card">
+                        <span class="project-tag live">Live</span>
+                        <span class="project-tag">AI Agent</span>
+                        <span class="project-tag">Security</span>
+                        <h3 class="project-title">Network Security Scanner</h3>
+                        <p class="project-description">
+                            Autonomous AI agent that performs comprehensive security assessments. After 17 years of manual audits, I automated what took 2-3 hours into a 2-minute scan.
+                        </p>
+                        <div class="project-meta">
+                            <span class="project-date">📅 May 5, 2026 • Day 1-2</span>
+                            <a href="https://github.com/omarparacha/network-security-scanner" target="_blank" class="project-link">View Project →</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 - Coming Next -->
+                    <div class="project-card" style="opacity: 0.7;">
+                        <span class="project-tag planned">Day 3-4</span>
+                        <span class="project-tag">AI Agent</span>
+                        <span class="project-tag">SD-WAN</span>
+                        <h3 class="project-title">Cisco SD-WAN Health Monitor</h3>
+                        <p class="project-description">
+                            Autonomous agent that monitors Cisco vManage infrastructure. Checks BFD tunnel status, control connections, and device reachability. Leveraging 17+ years of SD-WAN experience.
+                        </p>
+                        <div class="project-meta">
+                            <span class="project-date">📅 Coming May 7, 2026</span>
+                            <a href="#" class="project-link" style="opacity: 0.5;">In Progress →</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 - Planned -->
+                    <div class="project-card" style="opacity: 0.5;">
+                        <span class="project-tag planned">Day 5-6</span>
+                        <span class="project-tag">Tool</span>
+                        <span class="project-tag">Firewall</span>
+                        <h3 class="project-title">Palo Alto Policy Analyzer</h3>
+                        <p class="project-description">
+                            AI-powered firewall policy optimization. Identifies unused rules, shadow policies, and suggests consolidation. Years of firewall management, now automated.
+                        </p>
+                        <div class="project-meta">
+                            <span class="project-date">📅 Planned May 9, 2026</span>
+                            <a href="#" class="project-link" style="opacity: 0.5;">Coming Soon →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Let's Connect</h2>
+                    <p class="section-subtitle">
+                        Interested in AI automation, network architecture, or collaboration? Reach out!
+                    </p>
+                </div>
+                
+                <div class="contact-methods">
+                    <!-- Email -->
+                    <a href="mailto:reachomer@hotmail.com" class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-info">
+                            <h4>Email</h4>
+                            <p>reachomer@hotmail.com</p>
+                        </div>
+                    </a>
+                    
+                    <!-- LinkedIn -->
+                    <a href="https://linkedin.com/in/omarparacha" target="_blank" class="contact-item">
+                        <div class="contact-icon">💼</div>
+                        <div class="contact-info">
+                            <h4>LinkedIn</h4>
+                            <p>Connect and follow my journey</p>
+                        </div>
+                    </a>
+                    
+                    <!-- GitHub -->
+                    <a href="https://github.com/omarparacha" target="_blank" class="contact-item">
+                        <div class="contact-icon">💻</div>
+                        <div class="contact-info">
+                            <h4>GitHub</h4>
+                            <p>View my code and projects</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Availability -->
+                <div class="availability">
+                    <h3>Open to Opportunities</h3>
+                    <p>
+                        🤝 Network automation consulting projects<br>
+                        💼 Senior Network Architect / AI roles<br>
+                        🎤 Speaking engagements and podcasts<br>
+                        🤖 AI automation collaborations
+                    </p>
+                    <a href="mailto:reachomer@hotmail.com" class="btn btn-primary">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-title">Omar Paracha</div>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        Network Architect with 17+ years experience, now building AI agents for enterprise 
+                        infrastructure automation. Specializing in Cisco SD-WAN, Juniper Mist, Palo Alto, 
+                        and multi-cloud automation.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/omarparacha" target="_blank" class="social-link">in</a>
+                        <a href="https://github.com/omarparacha" target="_blank" class="social-link">gh</a>
+                        <a href="mailto:reachomer@hotmail.com" class="social-link">@</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="footer-title">Quick Links</div>
+                    <ul class="footer-links">
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="https://github.com/omarparacha" target="_blank">GitHub</a></li>
+                        <li><a href="#tech">Tech Stack</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <div class="footer-title">Connect</div>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/omarparacha" target="_blank">GitHub</a></li>
+                        <li><a href="https://linkedin.com/in/omarparacha" target="_blank">LinkedIn</a></li>
+                        <li><a href="mailto:reachomer@hotmail.com">Email</a></li>
+                        <li><a href="https://aiautomationlab.dev">Portfolio</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2026 Omar Paracha. Network Architect • 17+ Years Experience • Building the future of intelligent network automation.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.project-card, .tech-item, .contact-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
